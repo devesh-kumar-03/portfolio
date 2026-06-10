@@ -77,10 +77,9 @@ export default function Hero() {
               <Image
                 src="/images/devesh.png"
                 alt="Devesh Kumar"
-                width={650}
-                height={850}
+
                 priority
-                className="relative z-10 h-auto w-full max-w-[700px]"
+                className="relative z-10 h-auto w-full max-w-[360px]"
               />
             </div>
           </div>
