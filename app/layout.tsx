@@ -15,12 +15,88 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devesh Kumar",
+  metadataBase: new URL("https://portfolio.deveshkumar.workers.dev"),
+
+  title: {
+    default: "Devesh Kumar | Frontend Architect",
+    template: "%s | Devesh Kumar",
+  },
+
   description:
-    "Frontend Architect with 9+ years of experience building Banking, Lending and Fintech applications using React, Next.js, TypeScript and Micro Frontend Architecture.",
+    "Frontend Architect and Technical Lead with 9+ years of experience building Banking, Mortgage and Fintech platforms using React, Next.js, TypeScript, Accessibility and Micro Frontend Architecture.",
+
+  keywords: [
+    "Devesh Kumar",
+    "Frontend Architect",
+    "Technical Lead",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Micro Frontend",
+    "Frontend Engineering",
+    "Banking Applications",
+    "Fintech Applications",
+    "Accessibility",
+    "WCAG",
+    "React",
+    "Next.js",
+  ],
+
+  authors: [
+    {
+      name: "Devesh Kumar",
+      url: "https://portfolio.deveshkumar.workers.dev",
+    },
+  ],
+
+  creator: "Devesh Kumar",
+
+  openGraph: {
+    title: "Devesh Kumar | Frontend Architect",
+    description:
+      "Frontend Architect and Technical Lead with 9+ years of experience building Banking, Mortgage and Fintech platforms.",
+    url: "https://portfolio.deveshkumar.workers.dev",
+    siteName: "Devesh Kumar Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/images/devesh.png",
+        width: 1200,
+        height: 630,
+        alt: "Devesh Kumar Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Devesh Kumar | Frontend Architect",
+    description:
+      "Frontend Architect and Technical Lead with 9+ years of experience.",
+    images: ["/images/devesh.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://portfolio.deveshkumar.workers.dev",
+  },
 
   icons: {
     icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 

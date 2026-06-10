@@ -76,8 +76,9 @@ export default function Hero() {
 
               <Image
                 src="/images/devesh.png"
-                alt="Devesh Kumar"
-
+                alt="Devesh Kumar - Frontend Architect and Technical Lead"
+                width={360}
+                height={360}
                 priority
                 className="relative z-10 h-auto w-full max-w-[360px]"
               />
