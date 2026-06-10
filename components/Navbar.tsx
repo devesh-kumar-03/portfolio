@@ -35,6 +35,8 @@ export default function Navbar() {
 
           <a
             href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-black px-6 py-3 text-white"
           >
             Resume
