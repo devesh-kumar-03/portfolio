@@ -6,25 +6,47 @@ const experiences = [
     year: "2020 - Present",
     title: "Technical Lead",
     company: "Finova Technologies",
+    domain: "Banking • Fintech • Mortgage",
     impact:
-      "Led banking and lending platforms, improving performance by 40% and increasing component reuse by 60%.",
+      "Leading frontend architecture, mentoring engineers, driving code quality standards and delivering enterprise banking and lending platforms.",
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Micro Frontends",
+      "Accessibility",
+    ],
   },
   {
     year: "2017 - 2020",
     title: "Senior UI Developer",
     company: "Espire Infolabs",
+    domain: "Education • Enterprise Applications",
     impact:
-      "Built enterprise applications and large-scale university platforms serving thousands of users.",
+      "Delivered large-scale enterprise and education platforms with strong focus on performance, accessibility and scalability.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "SCSS",
+      "Bootstrap",
+      "WCAG",
+    ],
   },
   {
     year: "2015 - 2017",
     title: "Senior HTML Developer",
     company: "Quasar Media",
+    domain: "Client Projects • Responsive Web Applications",
     impact:
-      "Established frontend standards and responsive architecture across multiple client projects.",
+      "Built responsive web applications and established reusable frontend standards across multiple client projects.",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Responsive Design",
+    ],
   },
 ];
-
 export default function Experience() {
   return (
     <section
@@ -73,7 +95,33 @@ export default function Experience() {
                 <p className="text-slate-600">
                   {item.impact}
                 </p>
+
+                <p className="mt-4 text-sm font-medium text-[#d84f3f]">
+                  {item.domain}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {item.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="
+      rounded-full
+      bg-slate-100
+      px-3
+      py-1
+      text-sm
+      font-medium
+      text-slate-700
+      "
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
               </div>
+
+
             </div>
           ))}
         </div>

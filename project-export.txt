@@ -1,0 +1,2278 @@
+
+====================================================================================================
+FILE: app\globals.css
+====================================================================================================
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+  position: relative;
+}
+
+
+
+====================================================================================================
+FILE: app\layout.tsx
+====================================================================================================
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio.deveshkumar.workers.dev"),
+
+  title: {
+    default: "Devesh Kumar | Frontend Architect",
+    template: "%s | Devesh Kumar",
+  },
+
+  description:
+    "Frontend Architect and Technical Lead with 9+ years of experience building Banking, Mortgage and Fintech platforms using React, Next.js, TypeScript, Accessibility and Micro Frontend Architecture.",
+
+  keywords: [
+    "Devesh Kumar",
+    "Frontend Architect",
+    "Technical Lead",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Micro Frontend",
+    "Frontend Engineering",
+    "Banking Applications",
+    "Fintech Applications",
+    "Accessibility",
+    "WCAG",
+    "React",
+    "Next.js",
+  ],
+
+  authors: [
+    {
+      name: "Devesh Kumar",
+      url: "https://portfolio.deveshkumar.workers.dev",
+    },
+  ],
+
+  creator: "Devesh Kumar",
+
+  openGraph: {
+    title: "Devesh Kumar | Frontend Architect",
+    description:
+      "Frontend Architect and Technical Lead with 9+ years of experience building Banking, Mortgage and Fintech platforms.",
+    url: "https://portfolio.deveshkumar.workers.dev",
+    siteName: "Devesh Kumar Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/images/devesh.png",
+        width: 1200,
+        height: 630,
+        alt: "Devesh Kumar Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Devesh Kumar | Frontend Architect",
+    description:
+      "Frontend Architect and Technical Lead with 9+ years of experience.",
+    images: ["/images/devesh.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://portfolio.deveshkumar.workers.dev",
+  },
+
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}</body>
+    </html>
+  );
+}
+
+
+
+====================================================================================================
+FILE: app\page.tsx
+====================================================================================================
+
+import Script from "next/script";
+
+import Hero from "@/sections/Hero";
+import Achievements from "@/sections/Achievements";
+import WhatIDo from "@/sections/WhatIDo";
+import Awards from "@/sections/Awards";
+import Architecture from "@/sections/Architecture";
+import CaseStudies from "@/sections/CaseStudies";
+import Experience from "@/sections/Experience";
+import Leadership from "@/sections/Leadership";
+import Skills from "@/sections/Skills";
+import Contact from "@/sections/Contact";
+
+import SectionDivider from "@/components/SectionDivider";
+import Footer from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <>
+      <Script
+        id="person-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Devesh Kumar",
+            jobTitle: "Frontend Architect",
+            url: "https://portfolio.deveshkumar.workers.dev",
+            sameAs: [
+              "https://www.linkedin.com/in/devesh-kumar-developer/",
+            ],
+          }),
+        }}
+      />
+
+      <Hero />
+
+      <Achievements />
+
+      <SectionDivider />
+
+      <WhatIDo />
+
+      <SectionDivider />
+
+      <Awards />
+
+      <SectionDivider />
+
+      <Architecture />
+
+      <SectionDivider />
+
+      <CaseStudies />
+
+      <SectionDivider />
+
+      <Experience />
+
+      <SectionDivider />
+
+      <Leadership />
+
+      <SectionDivider />
+
+      <Skills />
+
+      <SectionDivider />
+
+      <Contact />
+
+      <Footer />
+    </>
+  );
+}
+
+
+====================================================================================================
+FILE: app\sitemap.ts
+====================================================================================================
+
+import { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: "https://portfolio.deveshkumar.workers.dev",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+  ];
+}
+
+
+====================================================================================================
+FILE: components\Button.tsx
+====================================================================================================
+
+type ButtonProps = {
+  children: React.ReactNode;
+};
+
+export default function Button({ children }: ButtonProps) {
+  return (
+    <button className="rounded-xl bg-blue-600 px-6 py-3 font-semibold transition hover:bg-blue-500">
+      {children}
+    </button>
+  );
+}
+
+
+====================================================================================================
+FILE: components\CaseStudyModal.tsx
+====================================================================================================
+
+"use client";
+
+type CaseStudy = {
+    title: string;
+    role: string;
+    challenge: string;
+    solution: string;
+    results: string[];
+};
+
+type Props = {
+    isOpen: boolean;
+    onClose: () => void;
+    study: CaseStudy | null;
+};
+
+export default function CaseStudyModal({
+    isOpen,
+    onClose,
+    study,
+}: Props) {
+    if (!isOpen || !study) return null;
+
+    return (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+            <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[32px] bg-white p-8 shadow-2xl">
+                <div className="mb-8 flex items-start justify-between gap-4">
+                    <div>
+                        <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                            {study.role}
+                        </span>
+
+                        <h2 className="mt-4 text-4xl font-bold">
+                            {study.title}
+                        </h2>
+                    </div>
+
+                    <button
+                        onClick={onClose}
+                        className="rounded-full border border-slate-300 px-5 py-2 font-medium"
+                    >
+                        Close
+                    </button>
+                </div>
+
+                <div className="mb-6 rounded-3xl border border-slate-200 p-6">
+                    <h3 className="mb-4 text-2xl font-bold">
+                        Challenge
+                    </h3>
+
+                    <p className="leading-relaxed text-slate-600">
+                        {study.challenge}
+                    </p>
+                </div>
+
+                <div className="mb-6 rounded-3xl border border-slate-200 p-6">
+                    <h3 className="mb-4 text-2xl font-bold">
+                        Solution
+                    </h3>
+
+                    <p className="leading-relaxed text-slate-600">
+                        {study.solution}
+                    </p>
+                </div>
+
+                <div className="rounded-3xl border border-slate-200 p-6">
+                    <h3 className="mb-6 text-2xl font-bold">
+                        Results
+                    </h3>
+
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {study.results.map((result) => (
+                            <div
+                                key={result}
+                                className="rounded-2xl bg-slate-50 p-4 font-medium"
+                            >
+                                ✓ {result}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+====================================================================================================
+FILE: components\ContactModal.tsx
+====================================================================================================
+
+"use client";
+
+type Props = {
+    isOpen: boolean;
+    onClose: () => void;
+};
+
+export default function ContactModal({
+    isOpen,
+    onClose,
+}: Props) {
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+            <div className="w-full max-w-lg rounded-[32px] bg-white p-8 shadow-2xl">
+                <h3 className="mb-4 text-3xl font-bold">
+                    Let's Connect 👋
+                </h3>
+
+                <p className="mb-6 leading-relaxed text-slate-600">
+                    Thank you for visiting my portfolio.
+                    I'm always open to discussing Frontend Architect,
+                    Technical Lead and Senior Frontend opportunities,
+                    consulting engagements or interesting projects.
+                </p>
+
+                <div className="mb-8 rounded-2xl bg-slate-100 p-4">
+                    <p className="mb-2 text-sm text-slate-500">
+                        Email
+                    </p>
+
+                    <a
+                        href="mailto:kumar.devesh53@gmail.com"
+                        className="text-lg font-semibold"
+                    >
+                        kumar.devesh53@gmail.com
+                    </a>
+                </div>
+
+                <div className="flex gap-3">
+                    <a
+                        href="mailto:kumar.devesh53@gmail.com"
+                        className="rounded-full bg-black px-6 py-3 font-medium text-white"
+                    >
+                        Send Email
+                    </a>
+
+                    <button
+                        onClick={onClose}
+                        className="rounded-full border border-slate-300 px-6 py-3 font-medium"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+====================================================================================================
+FILE: components\Container.tsx
+====================================================================================================
+
+type ContainerProps = {
+  children: React.ReactNode;
+};
+
+export default function Container({
+  children,
+}: ContainerProps) {
+  return (
+    <div className="mx-auto max-w-[1400px] px-6">
+      {children}
+    </div>
+  );
+}
+
+
+====================================================================================================
+FILE: components\FadeIn.tsx
+====================================================================================================
+
+"use client";
+
+import { motion } from "framer-motion";
+
+type Props = {
+    children: React.ReactNode;
+};
+
+export default function FadeIn({ children }: Props) {
+    return (
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 40,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+            }}
+            viewport={{
+                once: true,
+            }}
+            transition={{
+                duration: 0.6,
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
+
+====================================================================================================
+FILE: components\Footer.tsx
+====================================================================================================
+
+import Container from "./Container";
+
+export default function Footer() {
+    return (
+        <footer className="border-t border-slate-200 py-10">
+            <Container>
+                <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
+                    <p className="text-slate-500">
+                        © 2026 Devesh Kumar. All rights reserved.
+                    </p>
+
+                    <div className="flex gap-6">
+                        <a
+                            href="mailto:kumar.devesh53@gmail.com"
+                            className="text-slate-500 hover:text-black"
+                        >
+                            Email
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/devesh-kumar-developer/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-500 hover:text-black"
+                        >
+                            LinkedIn
+                        </a>
+
+                        <a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-500 hover:text-black"
+                        >
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </Container>
+        </footer>
+    );
+}
+
+
+====================================================================================================
+FILE: components\Navbar.tsx
+====================================================================================================
+
+import Container from "./Container";
+
+export default function Navbar() {
+  return (
+    <header className="sticky top-4 z-50">
+      <Container>
+        <div className="flex h-16 items-center justify-between rounded-full border border-slate-200 bg-white/80 px-6 shadow-lg backdrop-blur-xl">
+          <a
+            href="/"
+            className="text-2xl font-bold"
+          >
+            Devesh Kumar
+          </a>
+
+          <nav className="hidden gap-8 lg:flex">
+            <a
+              href="/"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Home
+            </a>
+            <a
+              href="#awards"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Awards
+            </a>
+
+            <a
+              href="#architecture"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Architecture
+            </a>
+
+            <a
+              href="#case-studies"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Case Studies
+            </a>
+
+            <a
+              href="#experience"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Experience
+            </a>
+
+            <a
+              href="#skills"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Expertise
+            </a>
+
+            <a
+              href="#contact"
+              className="text-slate-600 transition hover:text-black"
+            >
+              Contact
+            </a>
+          </nav>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+    rounded-full
+    bg-black
+    px-6
+    py-3
+    text-white
+    transition
+    hover:scale-105
+  "
+          >
+            Download Resume
+          </a>
+        </div>
+      </Container>
+    </header>
+  );
+}
+
+
+====================================================================================================
+FILE: components\SectionDivider.tsx
+====================================================================================================
+
+export default function SectionDivider() {
+    return (
+        <div className="my-12 flex justify-center">
+            <div className="h-px w-full max-w-[800px] bg-gradient-to-r from-transparent via-[#d84f3f] to-transparent" />
+        </div>
+    );
+}
+
+
+====================================================================================================
+FILE: components\SectionTitle.tsx
+====================================================================================================
+
+type Props = {
+  title: string;
+  subtitle?: string;
+};
+
+export default function SectionTitle({
+  title,
+  subtitle,
+}: Props) {
+  return (
+    <div className="mb-16">
+      {subtitle && (
+        <p className="mb-4 text-sm uppercase tracking-[0.2em] text-black-600">
+          {subtitle}
+        </p>
+      )}
+
+      <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
+        {title}
+      </h2>
+
+      <div className="h-1 w-20 rounded-full bg-[#f36a14]" />
+    </div>
+  );
+}
+
+
+====================================================================================================
+FILE: components\StatCard.tsx
+====================================================================================================
+
+
+
+
+====================================================================================================
+FILE: export-project.js
+====================================================================================================
+
+const fs = require("fs");
+const path = require("path");
+
+const OUTPUT_FILE = "project-export.txt";
+
+const ALLOWED_EXTENSIONS = new Set([
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".css",
+    ".scss",
+    ".json"
+]);
+
+const IGNORE_DIRS = new Set([
+    "node_modules",
+    ".next",
+    ".git",
+    "dist",
+    "build",
+    "coverage",
+    ".vercel",
+    "out"
+]);
+
+const IGNORE_FILES = new Set([
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    OUTPUT_FILE
+]);
+
+function walk(dir, files = []) {
+    const items = fs.readdirSync(dir);
+
+    for (const item of items) {
+        const fullPath = path.join(dir, item);
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+            if (IGNORE_DIRS.has(item)) continue;
+            walk(fullPath, files);
+            continue;
+        }
+
+        if (IGNORE_FILES.has(item)) continue;
+
+        const ext = path.extname(item);
+
+        if (!ALLOWED_EXTENSIONS.has(ext)) continue;
+
+        files.push(fullPath);
+    }
+
+    return files;
+}
+
+const files = walk(process.cwd());
+
+let output = "";
+
+for (const file of files) {
+    const relative = path.relative(process.cwd(), file);
+
+    output += `
+====================================================================================================
+FILE: ${relative}
+====================================================================================================
+
+`;
+
+    output += fs.readFileSync(file, "utf8");
+    output += "\n\n";
+}
+
+fs.writeFileSync(OUTPUT_FILE, output);
+
+console.log(`✅ Exported ${files.length} files`);
+console.log(`📄 Created: ${OUTPUT_FILE}`);
+
+
+====================================================================================================
+FILE: next-env.d.ts
+====================================================================================================
+
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+
+
+
+====================================================================================================
+FILE: next.config.ts
+====================================================================================================
+
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+
+
+
+====================================================================================================
+FILE: package.json
+====================================================================================================
+
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.17.0",
+    "next": "16.2.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+
+
+====================================================================================================
+FILE: sections\Achievements.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+
+const items = [
+  {
+    title: "9+ Years",
+    description: "Frontend Engineering Experience",
+  },
+  {
+    title: "20+",
+    description: "Enterprise Projects Delivered",
+  },
+  {
+    title: "5+",
+    description: "Teams Mentored & Led",
+  },
+  {
+    title: "Millions",
+    description: "End Users Served",
+  },
+];
+
+export default function Achievements() {
+  return (
+    <section className="pb-28">
+      <Container>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <div key={item.title} className="
+rounded-3xl
+border
+border-slate-200
+bg-white
+p-8
+shadow-sm
+transition-all
+duration-300
+hover:-translate-y-2
+hover:shadow-xl
+">
+              <h3 className="mb-2 text-3xl font-bold">
+                {item.title}
+              </h3>
+
+              <p className="text-slate-500">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Architecture.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+import {
+  Blocks,
+  Palette,
+  Accessibility,
+  Settings,
+} from "lucide-react";
+
+const architectureItems = [
+  {
+    title: "Micro Frontend Architecture",
+    description:
+      "Independent deployment strategy using Module Federation for scalable enterprise applications.",
+    icon: Blocks,
+  },
+  {
+    title: "Design Systems",
+    description:
+      "Reusable component libraries ensuring consistency, accessibility and faster delivery.",
+    icon: Palette,
+  },
+  {
+    title: "Accessibility Framework",
+    description:
+      "WCAG 2.1 AA compliance, screen readers, keyboard navigation and semantic UI.",
+    icon: Accessibility,
+  },
+  {
+    title: "Frontend Governance",
+    description:
+      "Code standards, architecture reviews, reusable patterns and engineering best practices.",
+    icon: Settings,
+  },
+];
+
+export default function Architecture() {
+  return (
+    <section
+      id="architecture"
+      className="py-28"
+    >
+      <Container>
+        <div className="rounded-[40px] bg-slate-50 p-12">
+          <SectionTitle
+            title="Architecture Leadership"
+            subtitle="How I Build"
+          />
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {architectureItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="
+group
+rounded-3xl
+border
+border-slate-200
+bg-white
+p-8
+transition-all
+duration-500
+hover:-translate-y-2
+hover:shadow-lg
+"
+                >
+                  {/* Gradient Line */}
+
+                  <div className="mb-6 h-[2px] w-16 bg-[#d84f3f]" />
+
+                  {/* Icon */}
+
+                  <div className="mb-6">
+                    <Icon className="h-12 w-12 text-black-400" />
+                  </div>
+
+                  {/* Title */}
+
+                  <h3 className="mb-4 text-2xl font-bold">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+
+                  <p className="leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Architecture Process */}
+
+          <div className="mt-16 border-t border-slate-200 pt-10">
+            <h3 className="mb-8 text-xl font-bold">
+              Architecture Approach
+            </h3>
+
+            <div className="grid gap-6 md:grid-cols-4">
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Design
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Product goals translated into scalable architecture.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Build
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  React, Next.js and reusable component systems.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Scale
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Micro Frontends and team autonomy.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Govern
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Standards, reviews and engineering excellence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Awards.tsx
+====================================================================================================
+
+import Image from "next/image";
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+export default function Awards() {
+    return (
+        <section
+            id="awards"
+            className="py-20"
+        >
+            <Container>
+                <SectionTitle
+                    title="Recognition & Awards"
+                    subtitle="Professional Achievements"
+                />
+
+                <div
+                    className="
+            grid
+            gap-10
+            overflow-hidden
+            rounded-[40px]
+            border
+            border-slate-200
+            bg-white
+            p-8
+            shadow-sm
+            lg:grid-cols-2
+          "
+                >
+                    {/* Image */}
+
+                    <div className="relative">
+                        <Image
+                            src="/images/award-2018.jpg"
+                            alt="Best Project Of The Year 2018 Award"
+                            width={800}
+                            height={600}
+                            className="
+                h-full
+                w-full
+                rounded-[24px]
+                object-cover
+              "
+                        />
+                    </div>
+
+                    {/* Content */}
+
+                    <div className="flex flex-col justify-center">
+                        <span
+                            className="
+                mb-4
+                inline-flex
+                w-fit
+                rounded-full
+                bg-amber-100
+                px-4
+                py-2
+                text-sm
+                font-semibold
+                text-amber-700
+              "
+                        >
+                            🏆 Award Recognition
+                        </span>
+
+                        <h3 className="mb-4 text-4xl font-bold">
+                            Best Project Of The Year 2018
+                        </h3>
+
+                        <p className="mb-6 text-lg font-medium text-[#d84f3f]">
+                            Espire Infolabs
+                        </p>
+
+                        <p className="mb-6 leading-relaxed text-slate-600">
+                            Recognized for contribution to the
+                            ACU Sitecore 9.x implementation project,
+                            awarded as part of the Best Project Of The
+                            Year team for successful enterprise delivery.
+                        </p>
+
+                        <div className="space-y-4">
+                            <div
+                                className="
+                  rounded-2xl
+                  bg-slate-50
+                  p-4
+                "
+                            >
+                                ✓ Enterprise Sitecore 9.x Platform
+                            </div>
+
+                            <div
+                                className="
+                  rounded-2xl
+                  bg-slate-50
+                  p-4
+                "
+                            >
+                                ✓ Best Project Of The Year Award
+                            </div>
+
+                            <div
+                                className="
+                  rounded-2xl
+                  bg-slate-50
+                  p-4
+                "
+                            >
+                                ✓ Recognized For Outstanding Contribution
+                            </div>
+
+                            <div
+                                className="
+                  rounded-2xl
+                  bg-slate-50
+                  p-4
+                "
+                            >
+                                ✓ Enterprise Project Delivery Excellence
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+        </section>
+    );
+}
+
+
+====================================================================================================
+FILE: sections\CaseStudies.tsx
+====================================================================================================
+
+"use client";
+
+import { useState } from "react";
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+import CaseStudyModal from "@/components/CaseStudyModal";
+
+const studies = [
+  {
+    number: "01",
+    title: "Loan Origination Platform",
+    role: "Technical Lead",
+
+    description:
+      "Built scalable loan origination workflows for enterprise banking applications using React, Next.js and TypeScript.",
+
+    challenge:
+      "Legacy loan workflows were fragmented, resulting in manual effort, slower processing and inconsistent user experiences.",
+
+    solution:
+      "Built a scalable React and Next.js platform using reusable components, TypeScript and accessibility-first architecture. Improved maintainability and streamlined workflows.",
+
+    results: [
+      "40% Faster Processing",
+      "Improved User Experience",
+      "Reduced Manual Effort",
+      "Better Maintainability",
+    ],
+
+    impactValue: "40%",
+    impactLabel: "Faster Processing",
+  },
+
+  {
+    number: "02",
+    title: "Mortgage Management Portal",
+    role: "Frontend Architect",
+
+    description:
+      "Designed a Micro Frontend architecture enabling independent deployments and improved team scalability.",
+
+    challenge:
+      "Multiple teams were blocked by tightly coupled frontend deployments and release dependencies.",
+
+    solution:
+      "Designed a Micro Frontend architecture using Module Federation and established shared design systems for independent deployments.",
+
+    results: [
+      "100% Independent Deployments",
+      "Faster Releases",
+      "Improved Team Scalability",
+      "Reduced Deployment Dependency",
+    ],
+
+    impactValue: "100%",
+    impactLabel: "Independent Deployments",
+  },
+
+  {
+    number: "03",
+    title: "Multi-Tenant University Platform",
+    role: "Senior UI Developer",
+
+    description:
+      "Built a reusable university platform supporting multiple institutions through configurable themes, component-driven architecture and accessibility-first development.",
+
+    challenge:
+      "Multiple universities required unique branding, layouts and user experiences while sharing the same core application. The platform also needed to meet accessibility requirements and maintain a consistent user experience across institutions.",
+
+    solution:
+      "Designed a scalable frontend architecture using reusable components, modular SCSS and configuration-driven theming. Implemented component-level theme management allowing multiple universities to operate from a single codebase while maintaining unique branding. Applied WCAG guidelines, semantic HTML, keyboard navigation and screen-reader support to ensure accessibility compliance across the platform.",
+
+    results: [
+      "Single Codebase For Multiple Universities",
+      "Multi-Theme Support",
+      "Reusable Component Architecture",
+      "WCAG Compliance",
+      "Improved Accessibility",
+      "Reduced Maintenance Effort",
+      "Faster Client Onboarding",
+    ],
+
+    impactValue: "WCAG",
+    impactLabel: "Accessible Multi-Tenant Platform",
+  },
+];
+
+export default function CaseStudies() {
+  const [selectedStudy, setSelectedStudy] = useState<
+    (typeof studies)[number] | null
+  >(null);
+
+  return (
+    <>
+      <section
+        id="case-studies"
+        className="py-20"
+      >
+        <Container>
+          <SectionTitle
+            title="Featured Case Studies"
+            subtitle="Selected Work"
+          />
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {studies.map((study) => (
+              <div
+                key={study.title}
+                className="
+                  rounded-[32px]
+                  border
+                  border-slate-200
+                  bg-white
+                  p-8
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:shadow-xl
+                "
+              >
+                <p className="mb-6 text-5xl font-bold text-slate-200">
+                  {study.number}
+                </p>
+
+                <p className="mb-3 text-sm font-medium text-slate-500">
+                  {study.role}
+                </p>
+
+                <h3 className="mb-5 text-3xl font-bold leading-tight">
+                  {study.title}
+                </h3>
+
+                <p className="leading-relaxed text-slate-600">
+                  {study.description}
+                </p>
+
+                <button
+                  onClick={() => setSelectedStudy(study)}
+                  className="
+                    mt-6
+                    font-semibold
+                    text-[#d84f3f]
+                    transition
+                    hover:underline
+                  "
+                >
+                  View Details →
+                </button>
+
+                <div className="mt-10 border-t border-slate-100 pt-6">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    Impact
+                  </p>
+
+                  <h4 className="text-4xl font-bold">
+                    {study.impactValue}
+                  </h4>
+
+                  <p className="mt-2 text-slate-500">
+                    {study.impactLabel}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <CaseStudyModal
+        isOpen={selectedStudy !== null}
+        study={selectedStudy}
+        onClose={() => setSelectedStudy(null)}
+      />
+    </>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Contact.tsx
+====================================================================================================
+
+"use client";
+
+import { useState } from "react";
+import Container from "@/components/Container";
+import ContactModal from "@/components/ContactModal";
+
+export default function Contact() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <section
+        id="contact"
+        className="py-32"
+      >
+        <Container>
+          <div className="rounded-[40px] border border-slate-200 bg-slate-50 p-16 text-center">
+            <h2 className="mb-4 text-5xl font-bold">
+              Let's Build Scalable Digital Products
+            </h2>
+
+            <p className="mb-10 text-slate-400">
+              Available for Frontend Architecture,
+              Technical Leadership and Enterprise Engineering.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                className="rounded-full bg-black px-8 py-4 font-semibold text-white"
+              >
+                Resume
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/devesh-kumar-developer/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-slate-300 px-8 py-4 font-semibold"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/devesh-kumar-03"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-slate-300 px-8 py-4 font-semibold"
+              >
+                GitHub
+              </a>
+
+              <button
+                onClick={() => setOpen(true)}
+                className="rounded-full border border-slate-300 px-8 py-4 font-semibold"
+              >
+                Email
+              </button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <ContactModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+      />
+    </>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Experience.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+const experiences = [
+  {
+    year: "2020 - Present",
+    title: "Technical Lead",
+    company: "Finova Technologies",
+    domain: "Banking • Fintech • Mortgage",
+    impact:
+      "Leading frontend architecture, mentoring engineers, driving code quality standards and delivering enterprise banking and lending platforms.",
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Micro Frontends",
+      "Accessibility",
+    ],
+  },
+  {
+    year: "2017 - 2020",
+    title: "Senior UI Developer",
+    company: "Espire Infolabs",
+    domain: "Education • Enterprise Applications",
+    impact:
+      "Delivered large-scale enterprise and education platforms with strong focus on performance, accessibility and scalability.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "SCSS",
+      "Bootstrap",
+      "WCAG",
+    ],
+  },
+  {
+    year: "2015 - 2017",
+    title: "Senior HTML Developer",
+    company: "Quasar Media",
+    domain: "Client Projects • Responsive Web Applications",
+    impact:
+      "Built responsive web applications and established reusable frontend standards across multiple client projects.",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Responsive Design",
+    ],
+  },
+];
+export default function Experience() {
+  return (
+    <section
+      id="experience"
+      className="py-28"
+    >
+      <Container>
+        <SectionTitle
+          title="Professional Experience"
+          subtitle="9+ Years of Frontend Engineering & Technical Leadership"
+        />
+
+        <div className="relative border-l border-slate-300 ml-4">
+          {experiences.map((item) => (
+            <div
+              key={item.year}
+              className="relative mb-12 ml-8"
+            >
+              <div
+                className="
+    absolute
+    -left-[42px]
+    top-2
+    h-4
+    w-4
+    rounded-full
+    bg-slate-800
+    ring-4
+    ring-slate-200
+  "
+              />
+
+              <p className="mb-2 text-sm font-medium text-slate-500">
+                {item.year}
+              </p>
+
+              <div className="rounded-3xl border border-slate-300 bg-white/5 p-6">
+                <h3 className="text-2xl font-bold">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-600 mb-4">
+                  {item.company}
+                </p>
+
+                <p className="text-slate-600">
+                  {item.impact}
+                </p>
+
+                <p className="mt-4 text-sm font-medium text-[#d84f3f]">
+                  {item.domain}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {item.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="
+      rounded-full
+      bg-slate-100
+      px-3
+      py-1
+      text-sm
+      font-medium
+      text-slate-700
+      "
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+
+
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Hero.tsx
+====================================================================================================
+
+import Image from "next/image";
+import Container from "@/components/Container";
+
+export default function Hero() {
+  return (
+    <section className="relative overflow-hidden py-20 lg:py-28">
+      {/* Background Glow */}
+
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-orange-100 blur-3xl" />
+
+        <div className="absolute right-0 top-20 h-[400px] w-[400px] rounded-full bg-blue-100 blur-3xl" />
+      </div>
+
+      <Container>
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* LEFT */}
+
+          <div>
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#d84f3f]">
+              Hi, I'm Devesh Kumar
+            </p>
+
+            <h1 className="text-6xl font-black leading-none tracking-tight md:text-7xl xl:text-8xl">
+              Frontend Architect
+              <br />
+
+              <span className="text-slate-500">
+                & Technical Lead
+              </span>
+            </h1>
+
+            <p className="mb-8 mt-6 max-w-2xl text-xl leading-relaxed text-slate-600">
+              Leading frontend architecture and engineering teams
+              to build scalable Banking, Mortgage and Fintech
+              platforms using React, Next.js, TypeScript,
+              Accessibility and Micro Frontend Architecture.
+            </p>
+
+            {/* Metrics */}
+
+            <div className="mb-10 flex flex-wrap gap-3">
+              <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                9+ Years Experience
+              </span>
+
+              <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                20+ Enterprise Projects
+              </span>
+
+              <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                Technical Leadership
+              </span>
+
+              <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                Banking & Fintech
+              </span>
+            </div>
+
+            {/* CTA */}
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="/resume.pdf"
+                className="
+                rounded-full
+                bg-black
+                px-8
+                py-4
+                font-medium
+                text-white
+                transition
+                hover:scale-105
+                hover:bg-slate-800
+              "
+              >
+                Download Resume
+              </a>
+
+              <a
+                href="#case-studies"
+                className="
+                rounded-full
+                border
+                border-slate-300
+                px-8
+                py-4
+                font-medium
+                transition
+                hover:bg-slate-100
+              "
+              >
+                View Work
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Experience Badge */}
+
+              <div
+                className="
+                absolute
+                -left-12
+                top-12
+                z-20
+                rounded-2xl
+                border
+                border-slate-200
+                bg-white
+                px-5
+                py-3
+                shadow-xl
+              "
+              >
+                <p className="text-2xl font-bold">
+                  9+
+                </p>
+
+                <p className="text-xs text-slate-500">
+                  Years Experience
+                </p>
+              </div>
+
+              {/* Lead Badge */}
+
+              <div
+                className="
+                absolute
+                -right-10
+                bottom-10
+                z-20
+                rounded-full
+                bg-black
+                px-5
+                py-3
+                text-sm
+                font-medium
+                text-white
+                shadow-xl
+              "
+              >
+                Technical Lead
+              </div>
+
+              {/* Image Card */}
+
+              <div
+                className="
+  relative
+  
+  
+  p-6
+  
+"
+              >
+                <Image
+                  src="/images/devesh.png"
+                  alt="Devesh Kumar - Frontend Architect and Technical Lead"
+                  width={450}
+                  height={450}
+                  priority
+                  className="h-auto w-full max-w-[340px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Leadership.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+const leadershipItems = [
+    {
+        title: "Architecture Strategy",
+        description:
+            "Defining scalable frontend architecture, reusable patterns and long-term technical direction.",
+    },
+    {
+        title: "Developer Mentoring",
+        description:
+            "Guiding engineers through code reviews, best practices and technical growth.",
+    },
+    {
+        title: "Engineering Standards",
+        description:
+            "Establishing coding standards, quality gates and maintainable development workflows.",
+    },
+    {
+        title: "Accessibility Leadership",
+        description:
+            "Driving WCAG compliance, semantic HTML and inclusive user experiences.",
+    },
+    {
+        title: "Cross-Team Collaboration",
+        description:
+            "Working closely with Product, Design, QA and Business stakeholders to deliver successful outcomes.",
+    },
+    {
+        title: "Technical Governance",
+        description:
+            "Leading architecture reviews, technical decisions and frontend engineering excellence initiatives.",
+    },
+];
+
+export default function Leadership() {
+    return (
+        <section className="py-20">
+            <Container>
+                <SectionTitle
+                    title="Technical Leadership"
+                    subtitle="Beyond Coding"
+                />
+
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {leadershipItems.map((item) => (
+                        <div
+                            key={item.title}
+                            className="
+                rounded-[32px]
+                border
+                border-slate-200
+                bg-white
+                p-8
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
+              "
+                        >
+                            <h3 className="mb-4 text-xl font-bold">
+                                {item.title}
+                            </h3>
+
+                            <p className="leading-relaxed text-slate-600">
+                                {item.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </Container>
+        </section>
+    );
+}
+
+
+====================================================================================================
+FILE: sections\Skills.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+const skillGroups = [
+  {
+    title: "Frameworks & Libraries",
+    skills: [
+      "React.js 18",
+      "Next.js 13/14",
+      "Vue.js 3",
+      "React Router",
+      "Micro Frontends",
+      "Module Federation",
+      "Single-SPA",
+    ],
+  },
+  {
+    title: "Languages",
+    skills: [
+      "JavaScript (ES6+)",
+      "TypeScript 5",
+      "HTML5",
+    ],
+  },
+  {
+    title: "State Management",
+    skills: [
+      "Redux",
+      "Zustand",
+      "Vuex",
+      "Pinia",
+      "Context API",
+    ],
+  },
+  {
+    title: "Styling & UI",
+    skills: [
+      "Tailwind CSS",
+      "Material UI",
+      "Bootstrap",
+      "SCSS/SASS",
+      "CSS3",
+      "Responsive Design",
+      "Cross-Browser Compatibility",
+      "CSS Architecture",
+    ],
+  },
+  {
+    title: "Testing",
+    skills: [
+      "React Testing Library",
+      "Jest",
+      "Vue Test Utils",
+    ],
+  },
+  {
+    title: "Build Tools & Engineering",
+    skills: [
+      "Webpack",
+      "Vite",
+      "NPM",
+      "Git",
+      "CI/CD",
+      "Code Reviews",
+      "Technical Mentoring",
+    ],
+  },
+  {
+    title: "APIs & Integrations",
+    skills: [
+      "REST APIs",
+      "Stripe",
+      "Chrome DevTools",
+    ],
+  },
+  {
+    title: "Accessibility",
+    skills: [
+      "WCAG 2.1",
+      "WAI-ARIA",
+      "Semantic HTML",
+      "Keyboard Navigation",
+      "Screen Readers",
+      "Lighthouse Audits",
+      "Color Contrast Testing",
+    ],
+  },
+];
+
+export default function Skills() {
+  return (
+    <section
+      id="skills"
+      className="py-20"
+    >
+      <Container>
+        <SectionTitle
+          title="Technical Expertise"
+          subtitle="Frontend Architecture & Engineering"
+        />
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          {skillGroups.map((group) => (
+            <div
+              key={group.title}
+              className="
+                rounded-[32px]
+                border
+                border-slate-200
+                bg-white
+                p-8
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
+              "
+            >
+              <h3 className="mb-6 text-2xl font-bold">
+                {group.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="
+                      rounded-full
+                      bg-slate-100
+                      px-4
+                      py-2
+                      text-sm
+                      font-medium
+                      text-slate-700
+                      transition-all
+                      duration-200
+                      hover:bg-black
+                      hover:text-white
+                    "
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\Stats.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+import {
+  Landmark,
+  Wallet,
+  Building2,
+  GraduationCap,
+} from "lucide-react";
+
+const domains = [
+  {
+    title: "Banking",
+    icon: Landmark,
+    description:
+      "Loan Origination, Customer Portals and Banking Workflows.",
+  },
+  {
+    title: "Fintech",
+    icon: Wallet,
+    description:
+      "Payments, Analytics and Lending Platforms.",
+  },
+  {
+    title: "Mortgage",
+    icon: Building2,
+    description:
+      "Mortgage Applications and Approval Systems.",
+  },
+  {
+    title: "Education",
+    icon: GraduationCap,
+    description:
+      "University Platforms and Student Portals.",
+  },
+];
+
+export default function Stats() {
+  return (
+    <section className="py-24">
+      <Container>
+        <SectionTitle
+          title="Trusted Domains"
+          subtitle="Industry Experience"
+        />
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {domains.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={item.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/40"
+              >
+                <Icon className="mb-4 h-10 w-10 text-black-400" />
+
+                <h3 className="mb-3 text-xl font-bold">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+====================================================================================================
+FILE: sections\TechStack.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+const tech = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Redux",
+    "Zustand",
+    "Module Federation",
+    "Micro Frontends",
+    "Accessibility",
+    "Tailwind",
+    "Jest",
+    "React Testing Library",
+    "AWS",
+];
+
+export default function TechStack() {
+    return (
+        <section
+            id="tech-stack"
+            className="py-28"
+        >
+            <Container>
+                <SectionTitle
+                    title="Technology Ecosystem"
+                    subtitle="Tools & Platforms"
+                />
+
+                <div className="flex flex-wrap gap-4">
+                    {tech.map((item) => (
+                        <span
+                            key={item}
+                            className="
+                rounded-full
+                border
+                border-slate-200
+                px-6
+                py-3
+                font-medium
+              "
+                        >
+                            {item}
+                        </span>
+                    ))}
+                </div>
+            </Container>
+        </section>
+    );
+}
+
+
+
+====================================================================================================
+FILE: sections\Testimonials.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+import SectionTitle from "@/components/SectionTitle";
+
+const testimonials = [
+    {
+        quote:
+            "Devesh consistently delivered scalable frontend solutions while mentoring engineers and improving overall code quality.",
+        author: "Engineering Manager",
+    },
+    {
+        quote:
+            "Strong architectural thinking combined with deep React expertise. A dependable technical leader.",
+        author: "Product Leadership",
+    },
+    {
+        quote:
+            "Played a key role in driving accessibility and frontend standards across multiple enterprise initiatives.",
+        author: "Delivery Lead",
+    },
+];
+
+export default function Testimonials() {
+    return (
+        <section
+            id="testimonials"
+            className="py-28"
+        >
+            <Container>
+                <SectionTitle
+                    title="Leadership Highlights"
+                    subtitle="What People Say"
+                />
+
+                <div className="grid gap-8 lg:grid-cols-3">
+                    {testimonials.map((item) => (
+                        <div
+                            key={item.quote}
+                            className="rounded-[32px] border border-slate-200 p-8"
+                        >
+                            <p className="mb-6 text-lg leading-relaxed text-slate-600">
+                                "{item.quote}"
+                            </p>
+
+                            <p className="font-semibold">
+                                {item.author}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </Container>
+        </section>
+    );
+}
+
+
+====================================================================================================
+FILE: sections\WhatIDo.tsx
+====================================================================================================
+
+import Container from "@/components/Container";
+
+export default function WhatIDo() {
+    return (
+        <section className="pb-10">
+            <Container>
+                <h2 className="mb-12 text-4xl font-bold">
+                    What I Do
+                </h2>
+
+                <div className="grid gap-10 md:grid-cols-3">
+                    <div className="pr-8 border-r border-slate-200/60">
+                        <h3 className="mb-3 text-xl font-semibold">
+                            Frontend Architecture
+                        </h3>
+
+                        <p className="text-slate-500">
+                            Architecting enterprise-grade frontend applications for Banking, Lending and Fintech domains using React, Next.js, TypeScript and Micro Frontend Architecture. Focused on scalability, maintainability and high-performance user experiences.
+                        </p>
+                    </div>
+
+                    <div className="pr-8 border-r border-slate-200/60">
+                        <h3 className="mb-3 text-xl font-semibold">
+                            Technical Leadership
+                        </h3>
+
+                        <p className="text-slate-500">
+                            Providing technical leadership through architecture planning, code reviews, developer mentoring and engineering best practices. Collaborating closely with product, design and business teams to deliver high-quality solutions.
+                        </p>
+                    </div>
+
+                    <div className="pr-8 ">
+                        <h3 className="mb-3 text-xl font-semibold">
+                            Accessibility
+                        </h3>
+
+                        <p className="text-slate-500">
+                            Implementing accessibility-first development practices with WCAG compliance, semantic markup and assistive technology support. Ensuring applications are usable, performant and accessible to all users.
+                        </p>
+                    </div>
+                </div>
+            </Container>
+        </section>
+    );
+}
+
+
+====================================================================================================
+FILE: tsconfig.json
+====================================================================================================
+
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+
+

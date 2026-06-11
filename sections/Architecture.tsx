@@ -37,7 +37,10 @@ const architectureItems = [
 
 export default function Architecture() {
   return (
-    <section className="py-28">
+    <section
+      id="architecture"
+      className="py-28"
+    >
       <Container>
         <div className="rounded-[40px] bg-slate-50 p-12">
           <SectionTitle
@@ -89,6 +92,56 @@ hover:shadow-lg
                 </div>
               );
             })}
+          </div>
+
+          {/* Architecture Process */}
+
+          <div className="mt-16 border-t border-slate-200 pt-10">
+            <h3 className="mb-8 text-xl font-bold">
+              Architecture Approach
+            </h3>
+
+            <div className="grid gap-6 md:grid-cols-4">
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Design
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Product goals translated into scalable architecture.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Build
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  React, Next.js and reusable component systems.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Scale
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Micro Frontends and team autonomy.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-semibold">
+                  Govern
+                </h4>
+
+                <p className="text-sm text-slate-600">
+                  Standards, reviews and engineering excellence.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

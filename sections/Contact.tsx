@@ -16,11 +16,12 @@ export default function Contact() {
         <Container>
           <div className="rounded-[40px] border border-slate-200 bg-slate-50 p-16 text-center">
             <h2 className="mb-4 text-5xl font-bold">
-              Available For New Opportunities
+              Let's Build Scalable Digital Products
             </h2>
 
-            <p className="mb-10 text-slate-500">
-              Frontend Architect • Technical Lead • Senior Frontend Engineer
+            <p className="mb-10 text-slate-400">
+              Available for Frontend Architecture,
+              Technical Leadership and Enterprise Engineering.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -39,6 +40,15 @@ export default function Contact() {
                 className="rounded-full border border-slate-300 px-8 py-4 font-semibold"
               >
                 LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/devesh-kumar-03"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-slate-300 px-8 py-4 font-semibold"
+              >
+                GitHub
               </a>
 
               <button
