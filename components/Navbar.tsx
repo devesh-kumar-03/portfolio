@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 import Container from "./Container";
 
@@ -59,9 +60,30 @@ export default function Navbar() {
 
           <a
             href="/"
-            className="text-sm font-bold md:text-xl"
+            className="flex items-center gap-3"
           >
-            Devesh Kumar
+            <div
+              className="
+      flex
+      h-11
+      w-11
+      items-center
+      justify-center
+      rounded-xl
+      border-2
+      border-[#d84f3f]
+      bg-white
+      font-bold
+      shadow-sm
+    "
+            >
+              <span>D</span>
+              <span className="text-[#d84f3f]">K</span>
+            </div>
+
+            <span className="text-sm font-bold md:text-xl">
+              Devesh Kumar
+            </span>
           </a>
 
           {/* Desktop Nav */}

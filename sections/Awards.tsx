@@ -107,16 +107,73 @@ export default function Awards() {
                                 Best Project Of The Year 2018
                             </h3>
 
-                            <p
-                                className="
-                  mt-4
-                  text-lg
-                  font-semibold
-                  text-[#d84f3f]
-                "
-                            >
-                                Espire Infolabs
-                            </p>
+                            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                                <div className="rounded-2xl  p-2">
+                                    <p className="mb-1 text-xs uppercase tracking-wide text-slate-500">
+                                        Awarded By
+                                    </p>
+
+                                    <p className="">
+                                        Espire Infolabs
+                                    </p>
+                                </div>
+
+                                <div className="rounded-2xl  p-2">
+                                    <p className="mb-1 text-xs uppercase tracking-wide text-slate-500">
+                                        Project
+                                    </p>
+
+                                    <p className="">
+                                        ACU Sitecore 9.x Implementation
+                                    </p>
+                                </div>
+
+                                <div className="rounded-2xl  p-2">
+                                    <p className="mb-1 text-xs uppercase tracking-wide text-slate-500">
+                                        Client
+                                    </p>
+
+                                    <p className="">
+                                        Australian Catholic University
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-4">
+                                <a
+                                    href="https://www.acu.edu.au/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="
+      flex
+      items-center
+      justify-between
+      rounded-2xl
+      border
+      border-slate-200
+      p-4
+      transition-all
+      hover:border-[#d84f3f]
+      hover:bg-[#fff8f5]
+    "
+                                >
+                                    <div>
+                                        <p className="text-xs uppercase tracking-wide text-slate-500">
+                                            Client Website
+                                        </p>
+
+                                        <p className="mt-1 font-semibold text-[#d84f3f]">
+                                            Australian Catholic University
+                                        </p>
+                                    </div>
+
+                                    <span className="font-semibold text-[#d84f3f]">
+                                        Open Site →
+                                    </span>
+                                </a>
+                            </div>
+
+
 
                             <p
                                 className="
@@ -139,19 +196,19 @@ export default function Awards() {
                   sm:grid-cols-2
                 "
                             >
-                                <div className="rounded-2xl bg-slate-50 p-4">
+                                <div className="rounded-2xl bg-slate-50 ">
                                     ✓ Sitecore 9.x Enterprise Platform
                                 </div>
 
-                                <div className="rounded-2xl bg-slate-50 p-4">
+                                <div className="rounded-2xl bg-slate-50 ">
                                     ✓ Best Project Of The Year
                                 </div>
 
-                                <div className="rounded-2xl bg-slate-50 p-4">
+                                <div className="rounded-2xl bg-slate-50 ">
                                     ✓ Outstanding Contribution
                                 </div>
 
-                                <div className="rounded-2xl bg-slate-50 p-4">
+                                <div className="rounded-2xl bg-slate-50 ">
                                     ✓ Enterprise Delivery Excellence
                                 </div>
                             </div>
