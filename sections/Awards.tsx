@@ -33,7 +33,7 @@ export default function Awards() {
 
                     <div className="relative">
                         <Image
-                            src="/images/award-2018.jpg"
+                            src="/images/award-2018.JPG"
                             alt="Best Project Of The Year 2018 Award"
                             width={800}
                             height={600}
