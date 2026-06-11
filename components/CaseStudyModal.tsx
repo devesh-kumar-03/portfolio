@@ -22,29 +22,86 @@ export default function CaseStudyModal({
     if (!isOpen || !study) return null;
 
     return (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-            <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[32px] bg-white p-8 shadow-2xl">
-                <div className="mb-8 flex items-start justify-between gap-4">
+        <div
+            className="
+        fixed
+        inset-0
+        z-[999]
+        flex
+        items-center
+        justify-center
+        bg-black/50
+        p-4
+        backdrop-blur-sm
+      "
+        >
+            <div
+                className="
+          max-h-[90vh]
+          w-full
+          max-w-4xl
+          overflow-y-auto
+          rounded-[24px]
+          bg-white
+          p-5
+          shadow-2xl
+          md:rounded-[32px]
+          md:p-8
+        "
+            >
+                {/* Header */}
+
+                <div className="mb-6 flex items-start justify-between gap-4 md:mb-8">
                     <div>
-                        <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium">
+                        <span
+                            className="
+                rounded-full
+                bg-slate-100
+                px-4
+                py-2
+                text-xs
+                font-medium
+                md:text-sm
+              "
+                        >
                             {study.role}
                         </span>
 
-                        <h2 className="mt-4 text-4xl font-bold">
+                        <h2
+                            className="
+                mt-4
+                text-2xl
+                font-bold
+                leading-tight
+                md:text-4xl
+              "
+                        >
                             {study.title}
                         </h2>
                     </div>
 
                     <button
                         onClick={onClose}
-                        className="rounded-full border border-slate-300 px-5 py-2 font-medium"
+                        className="
+              rounded-full
+              border
+              border-slate-300
+              px-4
+              py-2
+              text-sm
+              font-medium
+              transition
+              hover:bg-slate-50
+            "
                     >
                         Close
                     </button>
                 </div>
 
-                <div className="mb-6 rounded-3xl border border-slate-200 p-6">
-                    <h3 className="mb-4 text-2xl font-bold">
+                {/* Challenge */}
+
+                <div className="mb-5 rounded-3xl border border-slate-200 p-5 md:mb-6 md:p-6">
+                    <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                         Challenge
                     </h3>
 
@@ -53,8 +110,10 @@ export default function CaseStudyModal({
                     </p>
                 </div>
 
-                <div className="mb-6 rounded-3xl border border-slate-200 p-6">
-                    <h3 className="mb-4 text-2xl font-bold">
+                {/* Solution */}
+
+                <div className="mb-5 rounded-3xl border border-slate-200 p-5 md:mb-6 md:p-6">
+                    <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                         Solution
                     </h3>
 
@@ -63,16 +122,23 @@ export default function CaseStudyModal({
                     </p>
                 </div>
 
-                <div className="rounded-3xl border border-slate-200 p-6">
-                    <h3 className="mb-6 text-2xl font-bold">
+                {/* Results */}
+
+                <div className="rounded-3xl border border-slate-200 p-5 md:p-6">
+                    <h3 className="mb-5 text-xl font-bold md:mb-6 md:text-2xl">
                         Results
                     </h3>
 
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <div className="grid gap-3 md:grid-cols-2 md:gap-4">
                         {study.results.map((result) => (
                             <div
                                 key={result}
-                                className="rounded-2xl bg-slate-50 p-4 font-medium"
+                                className="
+                  rounded-2xl
+                  bg-slate-50
+                  p-4
+                  font-medium
+                "
                             >
                                 ✓ {result}
                             </div>

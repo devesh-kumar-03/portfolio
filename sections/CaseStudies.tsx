@@ -95,7 +95,7 @@ export default function CaseStudies() {
     <>
       <section
         id="case-studies"
-        className="py-20"
+        className="py-12 md:py-20"
       >
         <Container>
           <SectionTitle
@@ -103,38 +103,50 @@ export default function CaseStudies() {
             subtitle="Selected Work"
           />
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-5 md:gap-8 lg:grid-cols-3">
             {studies.map((study) => (
               <div
                 key={study.title}
                 className="
-                  rounded-[32px]
+                  rounded-[24px]
                   border
                   border-slate-200
                   bg-white
-                  p-8
+                  p-5
                   shadow-sm
                   transition-all
                   duration-300
-                  hover:-translate-y-2
+                  hover:-translate-y-1
                   hover:shadow-xl
+                  md:rounded-[32px]
+                  md:p-8
                 "
               >
-                <p className="mb-6 text-5xl font-bold text-slate-200">
+                {/* Number */}
+
+                <p className="mb-4 text-4xl font-bold text-slate-200 md:mb-6 md:text-5xl">
                   {study.number}
                 </p>
+
+                {/* Role */}
 
                 <p className="mb-3 text-sm font-medium text-slate-500">
                   {study.role}
                 </p>
 
-                <h3 className="mb-5 text-3xl font-bold leading-tight">
+                {/* Title */}
+
+                <h3 className="mb-4 text-2xl font-bold leading-tight md:mb-5 md:text-3xl">
                   {study.title}
                 </h3>
+
+                {/* Description */}
 
                 <p className="leading-relaxed text-slate-600">
                   {study.description}
                 </p>
+
+                {/* View Details */}
 
                 <button
                   onClick={() => setSelectedStudy(study)}
@@ -149,12 +161,14 @@ export default function CaseStudies() {
                   View Details →
                 </button>
 
-                <div className="mt-10 border-t border-slate-100 pt-6">
+                {/* Impact */}
+
+                <div className="mt-6 border-t border-slate-100 pt-5 md:mt-10 md:pt-6">
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
                     Impact
                   </p>
 
-                  <h4 className="text-4xl font-bold">
+                  <h4 className="text-3xl font-bold md:text-4xl">
                     {study.impactValue}
                   </h4>
 

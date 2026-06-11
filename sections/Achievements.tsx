@@ -14,34 +14,39 @@ const items = [
     description: "Teams Mentored & Led",
   },
   {
-    title: "Millions",
-    description: "End Users Served",
+    title: "🏆",
+    description: "Best Project Award",
   },
 ];
 
 export default function Achievements() {
   return (
-    <section className="pb-28">
+    <section className="pb-12 md:pb-20">
       <Container>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
           {items.map((item) => (
-            <div key={item.title} className="
-rounded-3xl
-border
-border-slate-200
-bg-white
-p-8
-shadow-sm
-transition-all
-duration-300
-hover:-translate-y-2
-hover:shadow-xl
-">
-              <h3 className="mb-2 text-3xl font-bold">
+            <div
+              key={item.description}
+              className="
+                rounded-[24px]
+                border
+                border-slate-200
+                bg-white
+                p-5
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
+                md:rounded-[32px]
+                md:p-8
+              "
+            >
+              <h3 className="mb-2 text-2xl font-bold md:text-3xl">
                 {item.title}
               </h3>
 
-              <p className="text-slate-500">
+              <p className="text-sm text-slate-500 md:text-base">
                 {item.description}
               </p>
             </div>

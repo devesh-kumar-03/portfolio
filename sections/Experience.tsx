@@ -47,11 +47,12 @@ const experiences = [
     ],
   },
 ];
+
 export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-28"
+      className="py-12 md:py-20"
     >
       <Container>
         <SectionTitle
@@ -59,40 +60,63 @@ export default function Experience() {
           subtitle="9+ Years of Frontend Engineering & Technical Leadership"
         />
 
-        <div className="relative border-l border-slate-300 ml-4">
+        <div className="relative ml-2 border-l border-slate-300 md:ml-4">
           {experiences.map((item) => (
             <div
               key={item.year}
-              className="relative mb-12 ml-8"
+              className="relative mb-8 ml-5 md:mb-12 md:ml-8"
             >
+              {/* Timeline Dot */}
+
               <div
                 className="
-    absolute
-    -left-[42px]
-    top-2
-    h-4
-    w-4
-    rounded-full
-    bg-slate-800
-    ring-4
-    ring-slate-200
-  "
+                  absolute
+                  -left-[27px]
+                  top-2
+                  h-3
+                  w-3
+                  rounded-full
+                  bg-slate-800
+                  ring-4
+                  ring-slate-200
+                  md:-left-[42px]
+                  md:h-4
+                  md:w-4
+                "
               />
 
-              <p className="mb-2 text-sm font-medium text-slate-500">
+              {/* Year */}
+
+              <p className="mb-2 text-xs font-medium text-slate-500 md:text-sm">
                 {item.year}
               </p>
 
-              <div className="rounded-3xl border border-slate-300 bg-white/5 p-6">
-                <h3 className="text-2xl font-bold">
+              {/* Card */}
+
+              <div
+                className="
+                  rounded-[24px]
+                  border
+                  border-slate-200
+                  bg-white
+                  p-5
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:shadow-lg
+                  md:rounded-[32px]
+                  md:p-6
+                "
+              >
+                <h3 className="text-xl font-bold md:text-2xl">
                   {item.title}
                 </h3>
 
-                <p className="text-slate-600 mb-4">
+                <p className="mb-4 text-slate-600">
                   {item.company}
                 </p>
 
-                <p className="text-slate-600">
+                <p className="leading-relaxed text-slate-600">
                   {item.impact}
                 </p>
 
@@ -100,28 +124,26 @@ export default function Experience() {
                   {item.domain}
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {item.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="
-      rounded-full
-      bg-slate-100
-      px-3
-      py-1
-      text-sm
-      font-medium
-      text-slate-700
-      "
+                        rounded-full
+                        bg-slate-100
+                        px-3
+                        py-1
+                        text-xs
+                        font-medium
+                        text-slate-700
+                        md:text-sm
+                      "
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-
               </div>
-
-
             </div>
           ))}
         </div>

@@ -36,31 +36,38 @@ const leadershipItems = [
 
 export default function Leadership() {
     return (
-        <section className="py-20">
+        <section
+            id="leadership"
+            className="py-12 md:py-20"
+        >
             <Container>
                 <SectionTitle
                     title="Technical Leadership"
                     subtitle="Beyond Coding"
                 />
 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {leadershipItems.map((item) => (
                         <div
                             key={item.title}
                             className="
-                rounded-[32px]
+                rounded-[24px]
                 border
                 border-slate-200
                 bg-white
-                p-8
+                p-5
                 shadow-sm
                 transition-all
                 duration-300
                 hover:-translate-y-1
                 hover:shadow-lg
+                md:rounded-[32px]
+                md:p-8
               "
                         >
-                            <h3 className="mb-4 text-xl font-bold">
+                            <div className="mb-5 h-[2px] w-16 bg-[#d84f3f]" />
+
+                            <h3 className="mb-4 text-lg font-bold md:text-xl">
                                 {item.title}
                             </h3>
 

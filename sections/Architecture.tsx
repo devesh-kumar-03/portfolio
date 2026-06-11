@@ -39,16 +39,26 @@ export default function Architecture() {
   return (
     <section
       id="architecture"
-      className="py-28"
+      className="py-12 md:py-20"
     >
       <Container>
-        <div className="rounded-[40px] bg-slate-50 p-12">
+        <div
+          className="
+            rounded-[24px]
+            bg-slate-50
+            p-5
+            md:rounded-[40px]
+            md:p-12
+          "
+        >
           <SectionTitle
             title="Architecture Leadership"
             subtitle="How I Build"
           />
 
-          <div className="grid gap-8 md:grid-cols-2">
+          {/* Cards */}
+
+          <div className="grid gap-5 md:grid-cols-2 md:gap-8">
             {architectureItems.map((item) => {
               const Icon = item.icon;
 
@@ -56,35 +66,26 @@ export default function Architecture() {
                 <div
                   key={item.title}
                   className="
-group
-rounded-3xl
-border
-border-slate-200
-bg-white
-p-8
-transition-all
-duration-500
-hover:-translate-y-2
-hover:shadow-lg
-"
+                    group
+                    rounded-3xl
+                    border
+                    border-slate-200
+                    bg-white
+                    p-5
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-lg
+                    md:p-8
+                  "
                 >
-                  {/* Gradient Line */}
+                  <div className="mb-5 h-[2px] w-16 bg-[#d84f3f]" />
 
-                  <div className="mb-6 h-[2px] w-16 bg-[#d84f3f]" />
+                  <Icon className="mb-5 h-10 w-10 md:h-12 md:w-12" />
 
-                  {/* Icon */}
-
-                  <div className="mb-6">
-                    <Icon className="h-12 w-12 text-black-400" />
-                  </div>
-
-                  {/* Title */}
-
-                  <h3 className="mb-4 text-2xl font-bold">
+                  <h3 className="mb-3 text-xl font-bold md:text-2xl">
                     {item.title}
                   </h3>
-
-                  {/* Description */}
 
                   <p className="leading-relaxed text-slate-600">
                     {item.description}
@@ -96,12 +97,12 @@ hover:shadow-lg
 
           {/* Architecture Process */}
 
-          <div className="mt-16 border-t border-slate-200 pt-10">
-            <h3 className="mb-8 text-xl font-bold">
+          <div className="mt-10 border-t border-slate-200 pt-8 md:mt-16 md:pt-10">
+            <h3 className="mb-6 text-lg font-bold md:mb-8 md:text-xl">
               Architecture Approach
             </h3>
 
-            <div className="grid gap-6 md:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div>
                 <h4 className="mb-2 font-semibold">
                   Design
